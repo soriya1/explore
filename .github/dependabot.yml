@@ -1,0 +1,37 @@
+version: 2
+registries:
+  rubygems-server-rubygemsever-com:
+    type: rubygems-server
+    url: https://rubygemsever.com
+    token: "${{secrets.RUBYGEMS_SERVER_RUBYGEMSEVER_COM_TOKEN}}"
+  rubygems-server-www-gem-com:
+    type: rubygems-server
+    url: https://www.gem.com
+    token: "${{secrets.RUBYGEMS_SERVER_WWW_GEM_COM_TOKEN}}"
+
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+    timezone: Asia/Phnom_Penh
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: rubocop
+    versions:
+    - 1.10.0
+    - 1.11.0
+    - 1.12.0
+    - 1.12.1
+    - 1.9.0
+    - 1.9.1
+  - dependency-name: fastimage
+    versions:
+    - 2.2.1
+    - 2.2.2
+  - dependency-name: minitest
+    versions:
+    - 5.14.3
+  registries:
+  - rubygems-server-rubygemsever-com
+  - rubygems-server-www-gem-com
